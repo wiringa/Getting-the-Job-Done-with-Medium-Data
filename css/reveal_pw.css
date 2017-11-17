@@ -1,0 +1,49 @@
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_flexbox_to_lay_out_web_applications */
+
+
+.reveal .mono {
+  font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace;
+}
+
+.reveal .images {
+  vertical-align: middle;
+}
+.reveal .images img {
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 25%;
+  border: none;
+  background-color: #fff;
+  padding: 0.5em;
+}
+
+.reveal .images .nopad {
+  padding: 0;
+}
+
+.vertical-box {
+  display: flex;
+  height: 400px;
+  width: 400px;
+  flex-flow: column;
+}
+.horizontal-box {
+  display: flex;
+  flex-flow: row;
+}
+.spacer {
+  flex: auto;
+  background-color: blue;
+}
+.centered-element {
+  flex: none;
+  background-color: white;
+}
+
+.slides .small {
+  font-size: 0.5em;
+}
+
+.slides .right {
+  text-align: right;
+}

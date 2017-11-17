@@ -1,0 +1,198 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <title>Getting the Job Done with Medium Data</title>
+
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/league.css">
+        <!--  black  league  moon  solarized  -->
+
+        <!-- Theme used for syntax highlighting of code -->
+        <link rel="stylesheet" href="lib/css/zenburn.css">
+
+        <!-- Pete's custom styles -->
+        <link rel="stylesheet" href="css/reveal_pw.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <h1>Getting the Job Done with Medium Data</h1>
+                    <p>
+                        Peter Wiringa<br>
+                        MGIS Student<br>
+                        U-Spatial Research Assistant<br>
+                        <a href="mailto:wiringa@umn.edu">wiringa@umn.edu</a>
+                    </p>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>(Small|Medium|Big) Data</h2>
+                    </section>
+
+                    <section>
+                        <h2>Big data</h2>
+                        <ul>
+                            <li class="fragment fade-up">&ldquo;I have big data&rdquo;</li>
+                            <li class="fragment fade-up">&ldquo;I have a big data problem&rdquo;</li>
+                            <li class="fragment fade-up">&ldquo;I have &lt;size&gt; data and a &lt;complexity&gt; problem&rdquo;</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Let&rsquo;s not overstate it</h2>
+                        <ul>
+                            <li>It&rsquo;s probably small or medium data</li>
+                            <li>You may, however, have a complex problem</li>
+                        </ul>
+                    </section>
+
+                    <section>
+
+                        <h2>&ldquo;Medium data&rdquo; defined</h2>
+                        <ul>
+                            <li>Definitions vary; be flexible</li>
+                            <li>&ldquo;&hellip;high terabytes, not petabytes&rdquo; <sup>*</sup></li>
+                            <li>For today&rsquo;s purposes: Medium data is more than you may be comfortable working with locally, or at all</li>
+                        </ul>
+
+                        <p class="small right"><br><br><sup>*</sup> <a href="http://highscalability.com/blog/2014/12/17/the-big-problem-is-medium-data.html"><em>The Big Problem is Medium Data</em></a></p>
+                    </section>
+
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Meeting the challenge</h2>
+                    </section>
+
+                    <section>
+                        <h2>Is more compute power the answer?</h2>
+
+                        <div class="images">
+                            <img src="img/AmazonWebservices_Logo.svg">
+                            <img src="img/gcp-logo.svg">
+                            <img src="img/Microsoft Azure.png" class="nopad">
+                        </div>
+
+                        <p class="fragment"><br><br><strong>Easy answer:</strong> <em>Sometimes</em></p>
+                    </section>
+
+
+                    <section>
+                        <h2>Vectors: Direction and magnitude</h2>
+                        <div style="display: flex; justify-content: center; position:relative; min-width:600px; min-height:400px; margin:0 auto;">
+                        <!-- <div style="position:relative; min-width:600px; min-height:400px; width: 100%; height: 100%; margin:0 auto; text-align:center;"> -->
+                            <img src="img/data_vectors_2.svg" style="background-color:#fff;position:absolute;margin:0 auto;">
+                            <img class="fragment" src="img/data_vectors_3.svg" style="background-color:#fff;position:absolute;margin:0 auto;">
+                        </div>
+                        <p class="fragment">Weekends aren&rsquo;t for work, they&rsquo;re for running jobs</p>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Example: Transit frequency</h2>
+                        <ul>
+                            <li>Pulling General Transit Feed Specification (GTFS) data from 577 providers</li>
+                            <li>Calculating average frequency for routes and on network segments</li>
+                            <li>&gt;20GB CSVs</li>
+                            <li>~170,000 route-shapes</li>
+                            <li>Estimated 1.5 million stops</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Visualizing trip frequency</h2>
+                        <video data-autoplay loop="true" style="max-height:360px;">
+                            <source data-src="vid/transit_720.webm" type="video/webm" />
+                            <source data-src="vid/transit_720_5M.mp4" type="video/mp4" />
+                        </video>
+
+                        <p class="fragment">Generate shapefiles of route-shapes and frequencies:<br>
+                                            About five minutes</p>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Example: Minnesota elevation</h2>
+                        <ul>
+                            <li>LiDAR data covering entire state</li>
+                            <li>~29,000 LAZ files (1.1TB)</li>
+                            <li>282 billion points</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Digital surface model (DSM)</h2>
+                        <img src="img/keller_dsm_424x600.png" style="max-height:400px;border:0;" alt="Digital surface model for the area near Keller Hall, University of Minnesota">
+                        <p class="fragment">21&frac12; hours to create tiles on a workstation pulling LAZ from <span class="mono">files.umn.edu</span></p>
+
+                        <aside class="notes">
+                            Older, but solid, 16-core, 32GB, 4x 600GB 10k-RPM drives in RAID 0 with SSD boot
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>MN LiDAR points in the browser</h2>
+
+                        <video data-autoplay loop="true" style="max-height:360px;">
+                            <source data-src="vid/greyhound_state_capitol_720.webm" type="video/webm" />
+                            <source data-src="vid/greyhound_state_capitol_720_5M.mp4" type="video/mp4" />
+                        </video>
+
+                        <p class="fragment" data-fragment-index="0">Data pre-organized for performance, reported as (4&nbsp;hours)&nbsp;&times;&nbsp;(28&nbsp;machines)&nbsp;&times;&nbsp;(32&nbsp;cores/machine)</p>
+
+                        <p class="small right"><a href="http://potree.entwine.io/data/mn.html">Minnesota LiDAR points in your browser</a></p>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>Again: Is more compute power the answer?</h2>
+                    <ul>
+                        <li>The answer is still &ldquo;sometimes&rdquo;</li>
+                        <li>Local: Almost certainly (parallelize what you can)</li>
+                        <li>Cloud: Consult your Magic 8-Ball</li>
+                        <li>Don&rsquo;t let anyone pinch pennies when they order your next computer</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Questions?</h2>
+                    <p><a href="mailto:wiringa@umn.edu">wiringa@umn.edu</a></p>
+                </section>
+            </div>
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+            // More info about config & dependencies:
+            // - https://github.com/hakimel/reveal.js#configuration
+            // - https://github.com/hakimel/reveal.js#dependencies
+            Reveal.initialize({
+                dependencies: [
+                    { src: 'plugin/markdown/marked.js' },
+                    { src: 'plugin/markdown/markdown.js' },
+                    { src: 'plugin/notes/notes.js', async: true },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+                ]
+            });
+        </script>
+    </body>
+</html>
